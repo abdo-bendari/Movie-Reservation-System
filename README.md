@@ -13,7 +13,6 @@ The platform is built with the following technologies:
 <ul>
   <li><strong>MongoDB</strong>: A NoSQL database used to store flexible data, such as movie listings, user profiles, reviews, tickets, and cinema details. MongoDB is chosen for its scalability and its ability to handle unstructured data.</li>
   <li><strong>Mongoose</strong>: An Object Data Modeling (ODM) library for MongoDB and Node.js. Mongoose simplifies database interactions by defining schemas and models and offering powerful query capabilities.</li>
-  <li><strong>Node.js</strong>: JavaScript runtime used for building the backend services, providing the foundation for building scalable and efficient APIs.</li>
   <li><strong>Express.js</strong>: A lightweight web framework for building RESTful APIs and managing HTTP requests and responses, helping to structure the application.</li>
   <li><strong>Socket.IO</strong>: Enables real-time communication between the client and server, used for implementing live chat support and movie-related notifications.</li>
   <li><strong>Stripe</strong>: A payment gateway for processing payments. Stripe is integrated to securely handle ticket bookings, allowing users to make payments directly on the platform.</li>
@@ -21,7 +20,6 @@ The platform is built with the following technologies:
   <li><strong>bcrypt</strong>: A library for securely hashing user passwords before storing them in the database, protecting user data.</li>
   <li><strong>Nodemailer</strong>: A module for sending email notifications such as booking confirmations and alerts for special events.</li>
   <li><strong>Natural</strong>: A natural language processing (NLP) library used to power the chatbot feature, helping users with queries and information about movie bookings and services.</li>
-  <li><strong>Joi</strong>: A data validation library used to validate user input, ensuring that all requests, including ticket bookings and reviews, are correct and secure.</li>
   <li><strong>dotenv</strong>: Loads environment variables from a .env file, keeping sensitive information like API keys and database credentials secure.</li>
   <li><strong>CORS</strong>: Middleware for enabling secure cross-origin requests between the client and the backend API, ensuring proper security during communication.</li>
   <li><strong>Nodemon</strong>: A development tool that automatically restarts the server when file changes are detected, improving the development workflow.</li>
@@ -29,18 +27,23 @@ The platform is built with the following technologies:
 
 ## Collections
 
-The project uses several collections to store data related to users, courses, payments, and other essential information. Below are the key collections used in the platform:
+<p>The platform utilizes the following collections in MongoDB to manage different types of data:</p>
 
-- **Users**: Stores user details such as name, email, password, role (student, instructor, admin), and enrollment history.
-- **Courses**: Contains course information including course name, description, instructor, price, and associated lectures.
-- **Lectures**: Stores individual lecture details, including title, video URL, and course association.
-- **Assignments**: Contains information about assignments for each course, including the assignment title, description, and due date.
-- **Payments**: Tracks user payments for courses, including payment method, amount, and status.
-- **Ratings**: Stores ratings given by students for courses and lectures.
-- **Reviews**: Allows students to leave written reviews for courses and instructors.
-- **Submissions**: Tracks student submissions for assignments, including grade and feedback from instructors.
-- **Inquiries**: Stores inquiries made by students to instructors or support teams.
-- **Certificates**: Contains information about issued certificates for completed courses, including the issue date and certificate URL.
+<ul>
+  <li><strong>Movie</strong>: Stores detailed information about each movie, including the title, description, director, cast, genres, and related metadata such as release year and duration.</li>
+  <li><strong>Genre</strong>: Contains all the movie genres (e.g., Action, Drama, Comedy, etc.). Each movie can be associated with one or more genres.</li>
+  <li><strong>Theater</strong>: Information about the cinemas, including location, available theaters, and facilities. This collection helps users choose theaters based on the movies they want to watch.</li>
+  <li><strong>Schedule</strong>: Stores movie showtimes, including the theater, date, and time. This allows users to select their preferred time and location for watching a movie.</li>
+  <li><strong>Seat</strong>: Contains information about available seats in each theater for a given movie schedule. This collection ensures users can select their seats before making a reservation.</li>
+  <li><strong>Reservation</strong>: Tracks user reservations for movies. It includes details about the movie, showtime, selected seats, and the associated user.</li>
+  <li><strong>Ticket</strong>: Stores ticket information for each reservation, including payment status, ticket details (movie, time, seats), and the user who made the reservation.</li>
+  <li><strong>User</strong>: Contains user profiles, including personal information, preferences, past reservations, and ticket details. It also stores authentication data securely.</li>
+  <li><strong>Payment</strong>: Tracks payment transactions, including the amount paid, payment method (e.g., Stripe), and transaction status. This collection ensures proper transaction tracking for movie tickets.</li>
+  <li><strong>Review</strong>: Stores user reviews and ratings for movies. Each review is associated with a user and a movie, allowing users to provide feedback on their movie experience.</li>
+  <li><strong>Notification</strong>: Stores real-time notifications for users, such as reminders about upcoming movies, ticket confirmations, and promotional offers.</li>
+  <li><strong>Chat</strong>: Contains user interactions with the customer support chat system. This collection holds messages and logs, helping support teams track and resolve user queries and issues.</li>
+</ul>
+
 
 # API Endpoints Documentation
 
