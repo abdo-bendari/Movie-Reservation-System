@@ -62,28 +62,30 @@ This document provides a detailed description of all available API endpoints for
 
 ---
 
-## User API
+## Movie API
 
-### `PUT /users/:id`
-- **Description**: Updates user information based on the user ID. The user must be authenticated and have proper permissions to modify their own data.
+### `POST /movies`
+- **Description**: Adds a new movie to the system. This endpoint requires the user to be authenticated and have admin privileges. The request should include movie details like title, genre, and other relevant information.
 
-### `DELETE /users/:id`
-- **Description**: Deletes a user from the system. Only admins have permission to perform this action. The user specified by the `id` will be permanently removed.
+### `PUT /movies/:id`
+- **Description**: Updates an existing movie by its ID. This endpoint requires the user to be authenticated and have admin privileges. The request must include the updated movie details.
 
-### `GET /users/:id`
-- **Description**: Retrieves the details of a specific user by their ID. This endpoint requires the user to be authenticated.
+### `DELETE /movies/:id`
+- **Description**: Deletes a movie from the system by its ID. The user must be authenticated and have admin privileges to perform this action.
 
-### `GET /users`
-- **Description**: Fetches all users from the system. Accessible only by authenticated admins.
+### `GET /movies`
+- **Description**: Retrieves a list of all movies in the system. The request requires the user to be authenticated.
 
-### `POST /users/enroll`
-- **Description**: Enrolls a user in a specific course. This action requires that the user is logged in and authorized to enroll.
+### `GET /movies/byActor`
+- **Description**: Retrieves a list of movies that feature a specific actor. The request requires the user to be authenticated.
 
-### `POST /users/complete`
-- **Description**: Marks a course as completed for the user. The user must have successfully finished the course to use this endpoint.
+### `GET /movies/topRated`
+- **Description**: Retrieves a list of the top-rated movies in the system. The request requires the user to be authenticated.
 
-### `POST /users/notification`
-- **Description**: Sends notifications to users. This feature is typically used by admins to inform users about important updates.
+### `GET /movies/search`
+- **Description**: Allows searching for movies by title or ID. The request requires the user to be authenticated and can be filtered by title or movie ID.
+
+
 
 ---
 
