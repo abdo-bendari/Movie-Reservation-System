@@ -86,180 +86,230 @@ This document provides a detailed description of all available API endpoints for
 - **Description**: Allows searching for movies by title or ID. The request requires the user to be authenticated and can be filtered by title or movie ID.
 
 
+---
+
+## Genre API
+
+### `POST /genres`
+- **Description**: Adds a new genre to the system. This endpoint requires the user to be authenticated and have admin privileges. The request should include the genre name and other related information.
+
+### `GET /genres`
+- **Description**: Retrieves a list of all genres in the system. The request requires the user to be authenticated.
+
+### `GET /genres/:id`
+- **Description**: Retrieves a specific genre by its ID. The request requires the user to be authenticated.
+
+### `PUT /genres/:id`
+- **Description**: Updates an existing genre by its ID. This endpoint requires the user to be authenticated and have admin privileges. The request must include the updated genre information.
+
+### `DELETE /genres/:id`
+- **Description**: Deletes a genre from the system by its ID. The user must be authenticated and have admin privileges to perform this action.
+
+### `GET /genres/:id/movie`
+- **Description**: Retrieves a list of movies associated with a specific genre. The request requires the user to be authenticated.
+
+### `POST /genres/:id/addMovie`
+- **Description**: Adds a movie to a specific genre. This endpoint requires the user to be authenticated and have admin privileges. The request must include the movie details to associate it with the genre.
+
 
 ---
 
-## Course API
+## Schedule API
 
-### `POST /courses`
-- **Description**: Creates a new course in the system. This endpoint is restricted to admin users, who must provide details such as the course title, description, and content.
+### `POST /schedules`
+- **Description**: Creates a new schedule for a movie in a specific theater. This endpoint requires the user to be authenticated and have admin privileges. The request should include the schedule details such as movie, theater, date, and time.
 
-### `PUT /courses/:id`
-- **Description**: Updates course details for a specific course ID. Admin users are allowed to modify course information, such as description and content.
+### `GET /schedules`
+- **Description**: Retrieves a list of all schedules available in the system. The request requires the user to be authenticated.
 
-### `DELETE /courses/:id`
-- **Description**: Deletes a course by its ID. Admin privileges are required to delete a course from the system.
+### `GET /schedules/search`
+- **Description**: Searches for a schedule based on movie or theater. The request requires the user to be authenticated. You can filter schedules by movie title or theater.
 
-### `GET /courses/:id`
-- **Description**: Fetches the details of a specific course using the course ID. All authenticated users can access course details.
+### `PUT /schedules/:id`
+- **Description**: Updates a specific schedule by its ID. This endpoint requires the user to be authenticated and have admin privileges. The request must include the updated schedule information.
 
-### `GET /courses`
-- **Description**: Retrieves a list of all courses available in the system. Access is restricted to authenticated users.
+### `DELETE /schedules/:id`
+- **Description**: Deletes a schedule by its ID. The user must be authenticated and have admin privileges to perform this action.
 
-### `GET /courses/filter`
-- **Description**: Filters courses based on certain criteria like category or difficulty level. This is useful for users to find courses matching their preferences.
-
-### `GET /courses/userCourses`
-- **Description**: Retrieves all courses enrolled by the current user. This endpoint helps users to track their progress.
-
-### `GET /courses/search`
-- **Description**: Searches for courses based on keywords or categories. It helps users quickly find relevant courses in the system.
 
 ---
 
-## Enrollment API
+## Theater API
 
-### `POST /enrollments`
-- **Description**: Allows users to enroll in a course. This endpoint requires authentication and is generally used by students to sign up for available courses.
+### `POST /theaters`
+- **Description**: Adds a new theater to the system. This endpoint requires the user to be authenticated and have admin privileges. The request must include the theater details such as name, location, and capacity.
 
-### `PUT /enrollments/:id/status`
-- **Description**: Updates the enrollment status for a specific course enrollment. This can include changing the enrollment to completed or withdrawn.
+### `PUT /theaters/:id`
+- **Description**: Updates the information of an existing theater by its ID. This action requires the user to be authenticated and have admin privileges. The request should include the updated theater details.
 
-### `GET /enrollments/userEnrollments`
-- **Description**: Retrieves all course enrollments for a specific user. This endpoint helps users track their current courses.
+### `DELETE /theaters/:id`
+- **Description**: Deletes a theater by its ID. The user must be authenticated and have admin privileges to perform this action.
 
----
+### `GET /theaters`
+- **Description**: Retrieves a list of all theaters in the system. The request requires the user to be authenticated.
 
-## Inquiry API
+### `GET /theaters/:id`
+- **Description**: Retrieves detailed information about a specific theater by its ID. The request requires the user to be authenticated.
 
-### `POST /inquiries`
-- **Description**: Submits an inquiry or question about a course or topic. Users can use this feature to ask for more information.
+### `POST /theaters/:id/addMovie`
+- **Description**: Adds a movie to a specific theater. This action requires the user to be authenticated and have admin privileges. The request must include the movie details.
 
-### `GET /inquiries/forUser`
-- **Description**: Retrieves inquiries made by a specific user. This is available only to admins to help them manage and respond to user inquiries.
+### `GET /theaters/:id/theaterMovies`
+- **Description**: Retrieves a list of movies currently available in a specific theater by its ID. The request requires the user to be authenticated.
 
-### `GET /inquiries/forCourse/:courseId`
-- **Description**: Fetches inquiries related to a specific course. This helps admins or instructors respond to questions about the course content.
-
-### `DELETE /inquiries/:id`
-- **Description**: Deletes a specific inquiry from the system. Admins have permission to remove any inquiry.
 
 ---
 
-## Lecture API
+## Seat API
 
-### `POST /lectures`
-- **Description**: Adds a new lecture to a course. This is restricted to instructors who can add content to their assigned courses.
+### `POST /seats`
+- **Description**: Adds a new seat to the system. This endpoint requires the user to be authenticated and have admin privileges. The request must include the seat details such as seat number and status.
 
-### `GET /lectures/lectures/:id`
-- **Description**: Retrieves details about a specific lecture using its ID. All authenticated users can access lecture details.
+### `GET /seats`
+- **Description**: Retrieves a list of all seats in the system. The request requires the user to be authenticated.
 
-### `PUT /lectures/:id`
-- **Description**: Updates the content or details of a specific lecture. Only instructors have permission to modify lecture content.
+### `GET /seats/search`
+- **Description**: Searches for a seat by its ID or seat number. The request requires the user to be authenticated.
 
-### `DELETE /lectures/:id`
-- **Description**: Deletes a lecture from a course. Instructors can delete their lectures from courses they are assigned to.
+### `PUT /seats/:id`
+- **Description**: Updates the status of an existing seat by its ID. This action requires the user to be authenticated and have admin privileges.
 
-### `GET /lectures/:courseId`
-- **Description**: Fetches all lectures for a specific course. Useful for students to view available content within a course.
+### `DELETE /seats/:id`
+- **Description**: Deletes a seat by its ID. The user must be authenticated and have admin privileges to perform this action.
+
+
+---
+
+## Reservation API
+
+### `POST /reservations`
+- **Description**: Creates a new reservation. The user must be authenticated and have admin privileges. This endpoint requires details of the reservation, such as the movie, seat selection, and user details.
+
+### `GET /reservations`
+- **Description**: Retrieves a list of all reservations. The user must be authenticated and have admin privileges.
+
+### `GET /reservations/:id`
+- **Description**: Retrieves a reservation by its ID. The user must be authenticated and have admin privileges.
+
+### `PUT /reservations/:id`
+- **Description**: Updates the payment status of a reservation. This action requires the user to be authenticated and have admin privileges.
+
+### `DELETE /reservations/:id`
+- **Description**: Deletes a reservation by its ID. The user must be authenticated and have admin privileges.
+
+
+---
+
+## Ticket API
+
+### `POST /tickets`
+- **Description**: Creates a new ticket. The user must be authenticated and have admin privileges. This endpoint requires ticket details such as reservation, seat, and payment status.
+
+### `GET /tickets`
+- **Description**: Retrieves a list of all tickets. The user must be authenticated and have admin privileges.
+
+### `GET /tickets/:id`
+- **Description**: Retrieves a ticket by its ID. The user must be authenticated and have admin privileges.
+
+### `GET /tickets/user/:userId`
+- **Description**: Retrieves all tickets for a specific user based on their user ID. The user must be authenticated.
+
+### `GET /tickets/reservation/:reservationId`
+- **Description**: Retrieves all tickets for a specific reservation based on the reservation ID. The user must be authenticated.
+
+### `PUT /tickets/:id`
+- **Description**: Updates the ticket details. The user must be authenticated and have admin privileges.
+
+### `DELETE /tickets/:id`
+- **Description**: Deletes a ticket by its ID. The user must be authenticated and have admin privileges.
+
+### `PATCH /tickets/:id/cancel`
+- **Description**: Cancels a ticket by its ID. The user must be authenticated and have admin privileges.
+
+### `GET /tickets/all/active`
+- **Description**: Retrieves all active tickets. The user must be authenticated and have admin privileges.
+
+### `GET /tickets/all/cancelled`
+- **Description**: Retrieves all cancelled tickets. The user must be authenticated and have admin privileges.
+
 
 ---
 
 ## Payment API
 
 ### `POST /payments`
-- **Description**: Processes a payment for a course. Only students can initiate a payment for enrolling in a course.
+- **Description**: Creates a new payment. The user must be authenticated. The request requires payment details such as amount, user, reservation, and payment status.
 
 ### `GET /payments`
-- **Description**: Retrieves all payment records in the system. Only admins have access to this data for auditing and reporting purposes.
+- **Description**: Retrieves a list of all payments. The user must be authenticated.
+
+### `GET /payments/:id`
+- **Description**: Retrieves a payment by its ID. The user must be authenticated.
 
 ### `PUT /payments/:id`
-- **Description**: Updates the status of a payment. Admins can mark payments as completed or failed based on the payment gateway response.
+- **Description**: Updates the payment status for a specific payment ID. This action is restricted to admins.
 
 ### `DELETE /payments/:id`
-- **Description**: Deletes a specific payment record. Admins can remove incorrect or cancelled payments from the system.
+- **Description**: Deletes a payment by its ID. This action is restricted to admins.
 
----
-
-## Rating API
-
-### `POST /ratings`
-- **Description**: Adds a rating for a specific course. Users can rate courses based on their experience after completing the course.
-
-### `GET /ratings/:courseId`
-- **Description**: Fetches the ratings for a specific course. This allows potential students to evaluate the course based on others' feedback.
-
-### `DELETE /ratings/:id`
-- **Description**: Deletes a rating for a course. Only admins are allowed to remove a course rating.
 
 ---
 
 ## Review API
 
 ### `POST /reviews`
-- **Description**: Adds a review for a specific course. Reviews typically include feedback on the course content and instructor performance.
+- **Description**: Creates a new review for a movie. The user must be authenticated. The request requires a movie ID and the review content.
 
-### `GET /reviews/:courseId`
-- **Description**: Retrieves all reviews for a given course. Users can read reviews before enrolling in a course.
+### `GET /reviews/Recent`
+- **Description**: Retrieves a list of the most recent reviews. The user must be authenticated.
 
-### `PUT /reviews/:id`
-- **Description**: Updates a specific review. Admins or the user who submitted the review can modify their review content.
+### `GET /reviews/:movieId/Movie`
+- **Description**: Retrieves reviews for a specific movie based on the movie ID. The user must be authenticated.
+
+### `GET /reviews/:userId/user`
+- **Description**: Retrieves reviews made by a specific user based on the user ID. The user must be authenticated.
 
 ### `DELETE /reviews/:id`
-- **Description**: Deletes a specific review. Admins have the ability to remove any review from the system.
+- **Description**: Deletes a review by its ID. This action is restricted to admins.
+
 
 ---
 
-## Submission API
+## Notification API
 
-### `POST /submissions/:assignmentId`
-- **Description**: Submits an assignment for grading. Students can upload their assignments related to a specific course or module.
+### `POST /notifications`
+- **Description**: Creates a new notification. The action is restricted to admins.
 
-### `PUT /submissions/:submissionId`
-- **Description**: Grades a specific assignment submission. Instructors can provide grades and feedback for student submissions.
+### `PATCH /notifications/:id`
+- **Description**: Marks a notification as read based on its ID. The user must be authenticated.
 
-### `GET /submissions/assignment/:assignmentId`
-- **Description**: Fetches all submissions for a specific assignment. Useful for instructors to view all student submissions.
+### `DELETE /notifications/:id`
+- **Description**: Deletes all notifications for a specific user. The action is restricted to admins.
 
-### `GET /submissions/user/:userId`
-- **Description**: Retrieves all assignment submissions made by a specific user. This helps instructors track a student's performance.
 
 ---
 
-## Certificate API
+## Chat API
 
-### `POST /certificates`
-- **Description**: Issues a certificate for a user upon course completion. Instructors or admins can generate certificates for students who successfully complete a course.
+### `POST /chat/start`
+- **Description**: Starts a new chat session. This endpoint initializes a new chat between the user and the system.
 
-### `GET /certificates`
-- **Description**: Fetches all certificates issued to users. Only admins can access this data to verify student achievements.
+### `GET /chat/:chatId`
+- **Description**: Retrieves the chat messages for a specific chat session based on the chat ID.
 
-### `DELETE /certificates/:id`
-- **Description**: Deletes a specific certificate. Instructors or admins can revoke certificates if necessary.
+### `POST /chat/message`
+- **Description**: Sends a new message in an existing chat session. The message is processed by the system for further handling.
 
----
-
-## Assignment API
-
-### `POST /assignments`
-- **Description**: Adds a new assignment for a course. Instructors can create assignments for their students to complete.
-
-### `GET /assignments/:courseId`
-- **Description**: Retrieves all assignments for a specific course. Students can view the assignments they need to complete.
-
-### `PUT /assignments/:id`
-- **Description**: Updates the details of an assignment. Instructors can modify assignments, such as changing deadlines or questions.
-
-### `DELETE /assignments/:id`
-- **Description**: Deletes an assignment. Only instructors can remove assignments from a course.
 
 
 
 ## Key Takeaways from this Project
 
-Course Platform is a robust, user-friendly platform designed to deliver high-quality online education. With features like course enrollment, assignment submissions, payment management, and certification issuance, the platform aims to provide a seamless learning experience. Secure user authentication and authorization ensure that access to resources is role-based, while data validation maintains the integrity of user inputs. The project utilizes technologies like Helmet, Morgan, JWT, MySQL, and Sequelize, offering a scalable solution for online learning.
+This project has provided invaluable hands-on experience in building a fully integrated movie reservation system, which included essential features such as real-time movie listings, seat selection, payment gateway integration, and user authentication. Throughout the development process, I honed my skills in designing efficient API endpoints, handling user data securely, and optimizing the user experience. Additionally, the project enhanced my understanding of implementing complex relationships within databases, as well as integrating third-party services like Stripe for secure payments. By focusing on scalability and performance, the system was built to accommodate future growth and provide a seamless experience for both users and administrators.
+
 
 ## Project Inspiration
 
-This project was inspired by the growing demand for accessible and efficient online learning platforms. The goal was to create an intuitive, scalable solution that provides students with the ability to enroll, complete courses, and earn certificates, while also allowing instructors to manage their content seamlessly. The platform is designed to streamline the learning process and foster a community where learners can grow, develop new skills, and engage with educational content in a meaningful way.
+The inspiration for this movie reservation system stemmed from the growing demand for digital transformation in the entertainment industry. With the increasing reliance on online platforms for booking services, I saw an opportunity to create a system that combines convenience, accessibility, and security. The idea was to provide moviegoers with an intuitive platform to discover movies, easily reserve seats, and complete payments—all within a seamless digital experience. The project was designed to address common challenges in the current market, such as inefficient booking processes and limited movie discovery options, while also exploring the integration of real-time data and third-party payment solutions to enhance user satisfaction.
+
 
