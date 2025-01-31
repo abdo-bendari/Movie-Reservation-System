@@ -312,9 +312,7 @@ This project has provided invaluable hands-on experience in building a fully int
 
 The inspiration for this movie reservation system stemmed from the growing demand for digital transformation in the entertainment industry. With the increasing reliance on online platforms for booking services, I saw an opportunity to create a system that combines convenience, accessibility, and security. The idea was to provide moviegoers with an intuitive platform to discover movies, easily reserve seats, and complete payments—all within a seamless digital experience. The project was designed to address common challenges in the current market, such as inefficient booking processes and limited movie discovery options, while also exploring the integration of real-time data and third-party payment solutions to enhance user satisfaction.
 
-## Project Inspiration
 
-The inspiration for this project stemmed from a desire to create an all-in-one platform for sports enthusiasts, bringing together match predictions, stadium bookings, and real-time event updates. Observing the growing demand for seamless online experiences in the sports industry, I saw an opportunity to integrate advanced technologies like AI, GeoJSON, and real-time data to enhance the sports engagement. This project reflects my passion for leveraging technology to solve real-world problems while providing users with a dynamic and intuitive platform for managing their sports activities.
 
 
 
